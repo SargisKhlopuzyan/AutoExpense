@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/size_5"
+    android:paddingRight="@dimen/size_5"
+    android:orientation="vertical">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_2"
+        android:paddingBottom="@dimen/size_5"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_height="@dimen/fragment_detail_toolbar_height"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:tabMode="fixed"
+            app:tabIndicatorColor="@android:color/transparent"
+            app:tabIndicatorHeight="0dp"
+            android:background="@drawable/rounded_corners_white_with_darker_gray_stroke"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="@dimen/size_2"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image"/>
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drawing"/>
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voice"/>
+
+        </android.support.design.widget.TabLayout>
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/size_85"
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackground"
+            android:textColor="@color/colorAccent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="Sum"
+            android:layout_width="@dimen/fragment_detail_first_column_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textSize="@dimen/detail_text_size"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editTextSum"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:inputType="number"
+            android:maxLength="5"
+            android:hint="Enter Sum"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/adapter_header_text_size"
+            android:textColor="@android:color/black" />
+
+        <CheckBox
+            android:id="@+id/checkBoxSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:checked="true"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"/>
+
+        <Spinner
+            android:id="@+id/spinnerSum"
+            android:layout_width="@dimen/spinner_width"
+            android:background="@drawable/spinner_border"
+            android:paddingBottom="@dimen/spinner_vertical_padding"
+            android:paddingTop="@dimen/spinner_vertical_padding"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDetailSeparator"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="Capacity"
+            android:layout_width="@dimen/fragment_detail_first_column_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textSize="@dimen/detail_text_size"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editTextCapacity"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="5"
+            android:hint="Enter Capacity"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/adapter_header_text_size"
+            android:textColor="@android:color/black" />
+
+        <CheckBox
+            android:id="@+id/checkBoxCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"/>
+
+        <Spinner
+            android:id="@+id/spinnerCapacity"
+            android:layout_width="@dimen/spinner_width"
+            android:background="@drawable/spinner_border"
+            android:paddingBottom="@dimen/spinner_vertical_padding"
+            android:paddingTop="@dimen/spinner_vertical_padding"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDetailSeparator"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="Distance"
+            android:layout_width="@dimen/fragment_detail_first_column_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textSize="@dimen/detail_text_size"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editTextDistance"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:hint="Enter Distance"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/adapter_header_text_size"
+            android:textColor="@android:color/black" />
+
+        <Spinner
+            android:id="@+id/spinnerDistance"
+            android:layout_width="@dimen/spinner_width"
+            android:background="@drawable/spinner_border"
+            android:paddingBottom="@dimen/spinner_vertical_padding"
+            android:paddingTop="@dimen/spinner_vertical_padding"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDetailSeparator"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="@string/price_per_liter"
+            android:layout_width="@dimen/fragment_detail_first_column_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textSize="@dimen/detail_text_size"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editTextPricePerLiter"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:hint="Enter Price"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/adapter_header_text_size"
+            android:textColor="@android:color/black" />
+
+        <Spinner
+            android:id="@+id/spinnerPricePerL"
+            android:layout_width="@dimen/spinner_width"
+            android:background="@drawable/spinner_border"
+            android:paddingBottom="@dimen/spinner_vertical_padding"
+            android:paddingTop="@dimen/spinner_vertical_padding"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDetailSeparator"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:paddingRight="@dimen/spinner_width"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="Date"
+            android:layout_width="@dimen/fragment_detail_first_column_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textSize="@dimen/detail_text_size"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/buttonDate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="Select Date"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:background="@drawable/rounded_corners_white_with_light_gray_stroke"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+        android:src="@drawable/select_image_icon"
+        android:gravity="center"
+        android:layout_gravity="center" />
+
+</LinearLayout >

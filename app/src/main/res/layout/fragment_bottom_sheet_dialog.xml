@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_detail_items_height"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="@string/bottom_sheet_peek_default_values_description"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/spinner_horizontal_padding"
+        android:paddingRight="@dimen/spinner_horizontal_padding"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".expense_detail.ExpenseDetailFragment">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragment_detail_items_height"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Sum Type"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/bottom_sheet_first_column_width"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center"
+                android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/spinnerSum"
+                android:layout_width="@dimen/spinner_width"
+                android:background="@drawable/spinner_border"
+                android:layout_marginLeft="@dimen/bottom_sheet_spinner_horizontal_padding"
+                android:paddingBottom="@dimen/spinner_vertical_padding"
+                android:paddingTop="@dimen/spinner_vertical_padding"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDetailSeparator"/>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragment_detail_items_height"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Capacity Type"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/bottom_sheet_first_column_width"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center"
+                android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/spinnerCapacity"
+                android:layout_width="@dimen/spinner_width"
+                android:background="@drawable/spinner_border"
+                android:layout_marginLeft="@dimen/bottom_sheet_spinner_horizontal_padding"
+                android:paddingBottom="@dimen/spinner_vertical_padding"
+                android:paddingTop="@dimen/spinner_vertical_padding"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDetailSeparator"/>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragment_detail_items_height"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Distance Type"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/bottom_sheet_first_column_width"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center"
+                android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/spinnerDistance"
+                android:layout_width="@dimen/spinner_width"
+                android:background="@drawable/spinner_border"
+                android:layout_marginLeft="@dimen/bottom_sheet_spinner_horizontal_padding"
+                android:paddingBottom="@dimen/spinner_vertical_padding"
+                android:paddingTop="@dimen/spinner_vertical_padding"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDetailSeparator"/>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragment_detail_items_height"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Price Per Liter Type"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/bottom_sheet_first_column_width"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center"
+                android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/spinnerPricePerL"
+                android:layout_width="@dimen/spinner_width"
+                android:background="@drawable/spinner_border"
+                android:layout_marginLeft="@dimen/bottom_sheet_spinner_horizontal_padding"
+                android:paddingBottom="@dimen/spinner_vertical_padding"
+                android:paddingTop="@dimen/spinner_vertical_padding"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDetailSeparator"/>s
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fragment_detail_items_height"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Price Per Liter"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/bottom_sheet_first_column_width"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_gravity="center"
+                android:textSize="@dimen/detail_text_size"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/editTextPricePerLiter"
+                android:layout_width="@dimen/spinner_width"
+                android:layout_marginLeft="@dimen/bottom_sheet_spinner_horizontal_padding"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:maxLength="3"
+                android:hint="Enter Price"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/adapter_header_text_size"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+    </LinearLayout >
+
+</LinearLayout>
+
+

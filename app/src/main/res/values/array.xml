@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_of_sum_items">
+        <item>֏</item>
+        <item>$</item>
+        <item>€</item>
+        <item>₽ </item>
+    </string-array>
+    <string-array name="list_of_capacity_items">
+        <item>L</item>
+        <item>Gal</item>
+    </string-array>
+    <string-array name="list_of_distance_items">
+        <item>Km</item>
+        <item>Mile</item>
+    </string-array>
+    <string-array name="list_of_price_per_l_items">
+        <item>֏</item>
+        <item>$</item>
+        <item>€</item>
+        <item>₽ </item>
+    </string-array>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorPrimary">#F3AD2E</color>
+    <color name="colorPrimaryDark">#F3AD2E</color>
+    <color name="colorAccent">#F3AD2E</color>
+    <color name="colorPrimary_Detail">#FAF9FA</color>
+
+    <color name="colorFloatingActionButton">#F3AD2E</color>
+    <color name="colorListHeaderBackground">#2A476B</color>
+
+    <color name="colorPrimaryLight">#444444</color>
+
+
+    <color name="colorDetailSeparator">#C2C2C2</color>
+    <color name="colorDetailToolbarText">#5B5A5C</color>
+    <color name="colorDetailContentText">#BFBDBF</color>
+    <color name="colorCardViewShadowStart">#EFEFEF</color>
+
+
+</resources>

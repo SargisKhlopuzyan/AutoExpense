@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#11112233"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="@dimen/size_2"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEditMode"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSelectAll"
+                    android:visibility="visible"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop = "-5dp"
+                    android:layout_marginRight = "-5dp"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:background="@null"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginBottom="-5dp"
+                    android:lineSpacingExtra="0dp"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:textSize="8dp"
+                    android:text="All"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewCheckboxCount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/select_expenses"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutEditModeActions"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                android:gravity="right|center_vertical">
+
+                <Button
+                    android:id="@+id/buttonShare"
+                    android:text="@string/share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                    android:paddingLeft="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:minWidth="@dimen/fragment_list_toolbar_icons_minimum_width"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/buttonDelete"
+                    android:text="@string/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                    android:paddingLeft="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:minWidth="@dimen/fragment_list_toolbar_icons_minimum_width"
+                    android:background="?attr/selectableItemBackground"
+                    android:textColor="@color/colorAccent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNormalMode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSettings"
+                android:text="@string/settings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:paddingLeft="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:minWidth="@dimen/fragment_list_toolbar_icons_minimum_width"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorAccent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/buttonNew"
+                android:text="New"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:paddingLeft="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:minWidth="@dimen/fragment_list_toolbar_icons_minimum_width"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/buttonEdit"
+                android:text="@string/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:paddingLeft="@dimen/fragment_list_toolbar_icons_horizontal_padding"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:minWidth="@dimen/fragment_list_toolbar_icons_minimum_width"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <include layout="@layout/activity_expense_list_content" />
+
+</LinearLayout>
