@@ -14,11 +14,9 @@
 
     <color name="colorPrimaryLight">#444444</color>
 
-
-    <color name="colorDetailSeparator">#C2C2C2</color>
+    <color name="colorDetailSeparator">#50C2C2C2</color>
     <color name="colorDetailToolbarText">#5B5A5C</color>
     <color name="colorDetailContentText">#BFBDBF</color>
     <color name="colorCardViewShadowStart">#EFEFEF</color>
-
 
 </resources>

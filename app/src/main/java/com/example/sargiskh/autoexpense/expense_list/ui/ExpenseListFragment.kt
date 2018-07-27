@@ -1,11 +1,10 @@
-package com.example.sargiskh.autoexpense.expense_list
+package com.example.sargiskh.autoexpense.expense_list.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,11 @@ import android.widget.*
 import com.example.sargiskh.autoexpense.ExpenseModel
 import com.example.sargiskh.autoexpense.R
 import com.example.sargiskh.autoexpense.bottom_sheet.BottomSheetFragment
-import com.example.sargiskh.autoexpense.database.ExpenseDBHelper
 import com.example.sargiskh.autoexpense.expense_detail.ExpenseDetailFragment
+import com.example.sargiskh.autoexpense.expense_list.adapter.RecyclerViewAdapter
+import com.example.sargiskh.autoexpense.expense_list.presenter.ExpenseListPresenter
 
-class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
+class ExpenseListFragment : Fragment() , ExpenseListFragmentInterface , CompoundButton.OnCheckedChangeListener {
 
     interface EditOrCreateNewExpenseInterface {
         fun editExistingExpense(bundle: Bundle)
@@ -25,12 +25,24 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
     }
 
     private lateinit var editOrCreateNewExpenseInterface : EditOrCreateNewExpenseInterface
+    private lateinit var expenseListPresenter:  ExpenseListPresenter
+
+    override fun updateRecyclerView() {
+        (recyclerView.adapter as RecyclerViewAdapter).notifyDataSetChanged()
+    }
+
+    override fun displayError(s: String) {
+        showToast(s)
+    }
+
+    override fun showToast(str: String) {
+        Toast.makeText(context, str, Toast.LENGTH_LONG).show()
+    }
+
 
     private lateinit var buttonSettings: Button
-
     private lateinit var checkBoxSelectAll: CheckBox
     private lateinit var textViewCheckboxCount: TextView
-
     private lateinit var linearLayoutEditMode: LinearLayout
     private lateinit var linearLayoutEditModeActions: LinearLayout
     private lateinit var linearLayoutNormalMode: LinearLayout
@@ -38,40 +50,22 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
     private lateinit var buttonEdit: Button
     private lateinit var buttonNew: Button
     private lateinit var buttonDelete: Button
-
     private lateinit var checkBoxHeader: CheckBox
     private lateinit var recyclerView: RecyclerView
-
-    private lateinit var expenseDBHelper : ExpenseDBHelper
-
-    private lateinit var allExpenses : ArrayList<ExpenseModel>;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("LOG_TAG", "ListFragment : onCreate")
-        retainInstance = true;
-        expenseDBHelper = ExpenseDBHelper(context!!)
-        allExpenses = expenseDBHelper.readAllExpenses()
+        retainInstance = true
+        expenseListPresenter = ExpenseListPresenter(this, activity!!.applicationContext)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_expense_list, container, false)
-
         findViews(view)
-
-        val adapter = RecyclerViewAdapter(context!!, allExpenses,
-                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemClicked(expenseModel, position) },
-                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemLongClicked(expenseModel, position) },
-                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemCheckboxClicked(expenseModel, position) })
-
-        recyclerView.layoutManager = LinearLayoutManager(context!!)
-        recyclerView.adapter = adapter;
-
-        activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-
-        initListeners()
-
+        setupViews()
+        setupListeners()
+        expenseListPresenter.retrieveAllExpenseList()
         return view;
     }
 
@@ -88,19 +82,17 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-
-        Log.e("LOG_TAG", "onCheckedChanged: isChecked: " + isChecked)
         if (isChecked) {
-            for (expenses in allExpenses) {
+            for (expenses in expenseListPresenter.getExpenseModelList()) {
                 expenses.isChecked = true
             }
         }
         else {
-            for (expenses in allExpenses) {
+            for (expenses in expenseListPresenter.getExpenseModelList()) {
                 expenses.isChecked = false
             }
         }
-        setEditModeAction()
+        setEditModeActionView()
         updateRecyclerView()
     }
 
@@ -122,7 +114,20 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         recyclerView = view.findViewById(R.id.recyclerView)
     }
 
-    private fun initListeners() {
+    private fun setupViews() {
+
+        val adapter = RecyclerViewAdapter(context!!, expenseListPresenter.getExpenseModelList(),
+                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemClicked(expenseModel, position) },
+                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemLongClicked(expenseModel, position) },
+                { expenseModel: ExpenseModel, position: Int -> recyclerViewItemCheckboxClicked(expenseModel, position) })
+
+        recyclerView.layoutManager = LinearLayoutManager(context!!)
+        recyclerView.adapter = adapter;
+
+        activity!!.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    }
+
+    private fun setupListeners() {
 
         buttonNew.setOnClickListener(View.OnClickListener {
             var bundle = ExpenseDetailFragment.setBundle(null, -1)
@@ -137,7 +142,7 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
         buttonDelete.setOnClickListener(View.OnClickListener {
             if (getEditMode()) {
-                deleteSelectedExpenses()
+                expenseListPresenter.deleteSelectedExpenses()
             }
         })
 
@@ -151,46 +156,52 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
 
     private fun recyclerViewItemClicked(expenseModel: ExpenseModel, position: Int) {
-        Log.e("LOG_TAG", "recyclerViewItemClicked")
         var bundle = ExpenseDetailFragment.setBundle(expenseModel, position)
         editOrCreateNewExpenseInterface!!.editExistingExpense(bundle)
     }
 
     private fun recyclerViewItemLongClicked(expenseModel: ExpenseModel, position: Int): Boolean {
-        Log.e("LOG_TAG", "recyclerViewItemLongClicked")
         setEditMode(true, true)
         return true
     }
 
     private fun recyclerViewItemCheckboxClicked(expenseModel: ExpenseModel, position: Int): Boolean {
-        Log.e("LOG_TAG", "recyclerViewItemCheckboxClicked")
         setEditMode(true, true)
         return true
     }
 
 
+    private fun setEditModeActionView() {
 
-    private fun deleteSelectedExpenses() {
-        val count = allExpenses.count()- 1
-        for (i in count downTo 0) {
-            if (allExpenses[i].isChecked) {
-                val deleted = expenseDBHelper.deleteExpense(allExpenses[i].id)
-                allExpenses.remove(allExpenses[i])
+        var count = 0
+        for (expense in expenseListPresenter.getExpenseModelList()) {
+            if (expense.isChecked) {
+                count++
             }
         }
-        updateRecyclerView()
+
+        if (count == 0) {
+            linearLayoutEditModeActions.visibility = View.GONE
+            textViewCheckboxCount.setText(resources.getString(R.string.select_expenses))
+
+            checkBoxSelectAll.setOnCheckedChangeListener(null)
+            checkBoxSelectAll.isChecked = false
+            checkBoxSelectAll.setOnCheckedChangeListener(this)
+        } else {
+            linearLayoutEditModeActions.visibility = View.VISIBLE
+            textViewCheckboxCount.setText(count.toString())
+
+            checkBoxSelectAll.setOnCheckedChangeListener(null)
+            if (count == expenseListPresenter.getExpenseModelList().size) {
+                checkBoxSelectAll.isChecked = true
+            } else {
+                checkBoxSelectAll.isChecked = false
+            }
+            checkBoxSelectAll.setOnCheckedChangeListener(this)
+        }
     }
 
-    private fun updateRecyclerView() {
-        (recyclerView.adapter as RecyclerViewAdapter).notifyDataSetChanged()
-    }
-
-    fun addExspenseToRecyclerView(expense: ExpenseModel) {
-        allExpenses.add(expense)
-        (recyclerView.adapter as RecyclerViewAdapter).notifyDataSetChanged()
-    }
-
-    fun setEditMode(isEditMode: Boolean, isUpdate: Boolean) {
+    public fun setEditMode(isEditMode: Boolean, isUpdateRecyclerViewAdapter: Boolean) {
 
         if (isEditMode) {
             linearLayoutEditMode.visibility = View.VISIBLE
@@ -198,7 +209,7 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
             checkBoxHeader.visibility = View.INVISIBLE
 
-            setEditModeAction()
+            setEditModeActionView()
         } else {
             linearLayoutEditMode.visibility = View.GONE
             linearLayoutNormalMode.visibility = View.VISIBLE
@@ -211,44 +222,18 @@ class ExpenseListFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         }
 
         (recyclerView.adapter as RecyclerViewAdapter).setEditMode(isEditMode)
-        if (isUpdate) {
+        if (isUpdateRecyclerViewAdapter) {
             (recyclerView.adapter as RecyclerViewAdapter).notifyDataSetChanged()
         }
     }
 
-    fun getEditMode() = (recyclerView.adapter as RecyclerViewAdapter).getEditMode()
+    public fun getEditMode() = (recyclerView.adapter as RecyclerViewAdapter).getEditMode()
 
-    private fun setEditModeAction() {
-
-        var count = 0
-        for (expense in allExpenses) {
-            if (expense.isChecked) {
-                count++
-            }
-        }
-
-        Log.e("LOG_TAG", "count: " + count)
-
-        if (count == 0) {
-            linearLayoutEditModeActions.visibility = View.GONE
-            textViewCheckboxCount.setText(resources.getString(R.string.select_expenses))
-
-            checkBoxSelectAll.setOnCheckedChangeListener(null)
-            checkBoxSelectAll.isChecked = false
-            checkBoxSelectAll.setOnCheckedChangeListener(this)
-
-        } else {
-            linearLayoutEditModeActions.visibility = View.VISIBLE
-            textViewCheckboxCount.setText(count.toString())
-
-            checkBoxSelectAll.setOnCheckedChangeListener(null)
-            if (count == allExpenses.size) {
-                checkBoxSelectAll.isChecked = true
-            } else {
-                checkBoxSelectAll.isChecked = false
-            }
-            checkBoxSelectAll.setOnCheckedChangeListener(this)
-        }
+    public fun addExpenseToRecyclerView(expenseModel: ExpenseModel) {
+        expenseListPresenter.addExpense(expenseModel)
     }
+
+
+
 
 }

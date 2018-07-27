@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="@dimen/size_5"
-    android:paddingRight="@dimen/size_5"
+    android:paddingLeft="@dimen/fragment_detail_horizontal_padding"
+    android:paddingRight="@dimen/fragment_detail_horizontal_padding"
     android:orientation="vertical">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_2"
-        android:paddingBottom="@dimen/size_5"
+        android:paddingTop="@dimen/fragment_detail_toolbar_padding_top"
+        android:paddingBottom="@dimen/fragment_detail_toolbar_padding_bottom"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -28,7 +28,7 @@
             android:contentInsetLeft="0dp"
             android:contentInsetStart="0dp"
             app:contentInsetLeft="0dp"
-            app:contentInsetStart="@dimen/size_2"
+            app:contentInsetStart="@dimen/fragment_detail_toolbar_padding_top"
             android:contentInsetRight="0dp"
             android:contentInsetEnd="0dp"
             app:contentInsetRight="0dp"
@@ -58,7 +58,7 @@
             android:id="@+id/buttonSave"
             android:text="Save"
             android:layout_width="wrap_content"
-            android:minWidth="@dimen/size_85"
+            android:minWidth="@dimen/fragment_detail_save_button_min_width"
             android:layout_height="?attr/actionBarSize"
             android:gravity="center"
             android:layout_gravity="center"
@@ -71,6 +71,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fragment_detail_items_height"
+        android:paddingLeft="@dimen/fragment_detail_content_horizontal_padding"
+        android:paddingRight="@dimen/fragment_detail_content_horizontal_padding"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -80,7 +82,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <EditText
@@ -96,7 +98,7 @@
             android:maxLength="5"
             android:hint="Enter Sum"
             android:background="@android:color/transparent"
-            android:textSize="@dimen/adapter_header_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <CheckBox
@@ -127,6 +129,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fragment_detail_items_height"
+        android:paddingLeft="@dimen/fragment_detail_content_horizontal_padding"
+        android:paddingRight="@dimen/fragment_detail_content_horizontal_padding"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -136,7 +140,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <EditText
@@ -152,7 +156,7 @@
             android:maxLength="5"
             android:hint="Enter Capacity"
             android:background="@android:color/transparent"
-            android:textSize="@dimen/adapter_header_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <CheckBox
@@ -182,6 +186,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fragment_detail_items_height"
+        android:paddingLeft="@dimen/fragment_detail_content_horizontal_padding"
+        android:paddingRight="@dimen/fragment_detail_content_horizontal_padding"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -191,7 +197,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <EditText
@@ -207,7 +213,7 @@
             android:maxLength="3"
             android:hint="Enter Distance"
             android:background="@android:color/transparent"
-            android:textSize="@dimen/adapter_header_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <Spinner
@@ -229,6 +235,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fragment_detail_items_height"
+        android:paddingLeft="@dimen/fragment_detail_content_horizontal_padding"
+        android:paddingRight="@dimen/fragment_detail_content_horizontal_padding"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -238,7 +246,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <EditText
@@ -254,7 +262,7 @@
             android:maxLength="3"
             android:hint="Enter Price"
             android:background="@android:color/transparent"
-            android:textSize="@dimen/adapter_header_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <Spinner
@@ -276,7 +284,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fragment_detail_items_height"
-        android:paddingRight="@dimen/spinner_width"
+        android:paddingLeft="@dimen/fragment_detail_content_horizontal_padding"
+        android:paddingRight="@dimen/fragment_detail_content_horizontal_padding"
+        android:layout_marginRight="@dimen/fragment_detail_content_horizontal_padding"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -286,7 +296,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:textColor="@android:color/black" />
 
         <Button
@@ -296,11 +306,11 @@
             android:hint="Select Date"
             android:textAllCaps="false"
             android:layout_marginLeft="@dimen/spinner_horizontal_padding"
-            android:layout_marginRight="@dimen/spinner_horizontal_padding"
+            android:layout_marginRight="@dimen/spinner_width"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:textSize="16dp"
+            android:textSize="@dimen/fragment_detail_text_size"
             android:background="@drawable/rounded_corners_white_with_light_gray_stroke"
             android:textColor="@android:color/black" />
 

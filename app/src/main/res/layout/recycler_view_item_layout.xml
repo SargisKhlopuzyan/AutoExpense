@@ -4,12 +4,15 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="@dimen/size_5" >
+    android:paddingLeft="@dimen/fragment_list_recycler_view_horizontal_padding"
+    android:paddingRight="@dimen/fragment_list_recycler_view_horizontal_padding"
+    android:paddingTop="@dimen/fragment_list_recycler_view_vertical_padding"
+    android:paddingBottom="@dimen/fragment_list_recycler_view_vertical_padding" >
 
     <CheckBox
         android:id="@+id/checkBox"
         android:visibility="gone"
-        android:paddingRight="@dimen/size_5"
+        android:paddingRight="@dimen/fragment_list_detail_checkbox_padding_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -22,8 +25,11 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/fragment_list_recycler_view_card_view_horizontal_padding"
+            android:paddingRight="@dimen/fragment_list_recycler_view_card_view_horizontal_padding"
+            android:paddingTop="@dimen/fragment_list_recycler_view_card_view_vertical_padding"
+            android:paddingBottom="@dimen/fragment_list_recycler_view_card_view_vertical_padding"
             android:background="@drawable/rounded_corners_white_with_darker_gray_stroke"
-            android:padding="@dimen/size_10"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
@@ -41,7 +47,7 @@
                     android:text="12345"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/size_14"
+                    android:textSize="@dimen/fragment_list_recycler_view_text_size"
                     android:textColor="@android:color/black" />
                 <TextView
                     android:id="@+id/textViewCapacity"
@@ -52,7 +58,7 @@
                     android:text="123"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/size_14"
+                    android:textSize="@dimen/fragment_list_recycler_view_text_size"
                     android:textColor="@android:color/holo_blue_light" />
             </LinearLayout>
 
@@ -60,24 +66,24 @@
                 android:id="@+id/textViewDistance"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:padding="@dimen/size_2"
                 android:text="123"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
-                android:textSize="@dimen/size_14"
+                android:textSize="@dimen/fragment_list_recycler_view_text_size"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewPrice"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:padding="@dimen/size_2"
                 android:text="123"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
-                android:textSize="@dimen/size_14"
+                android:textSize="@dimen/fragment_list_recycler_view_text_size"
                 android:textColor="@android:color/holo_blue_light" />
 
             <TextView
@@ -87,7 +93,7 @@
                 android:text="1234567890"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
-                android:textSize="@dimen/size_14"
+                android:textSize="@dimen/fragment_list_recycler_view_date_text_size"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>

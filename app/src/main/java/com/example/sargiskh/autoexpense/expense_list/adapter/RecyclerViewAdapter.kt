@@ -1,4 +1,4 @@
-package com.example.sargiskh.autoexpense.expense_list
+package com.example.sargiskh.autoexpense.expense_list.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

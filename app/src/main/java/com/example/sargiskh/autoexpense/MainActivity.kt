@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.example.sargiskh.autoexpense.expense_detail.ExpenseDetailFragment
-import com.example.sargiskh.autoexpense.expense_list.ExpenseListFragment
+import com.example.sargiskh.autoexpense.expense_list.ui.ExpenseListFragment
 
 
 class MainActivity : AppCompatActivity(), ExpenseListFragment.EditOrCreateNewExpenseInterface, ExpenseDetailFragment.ExpenseDataBaseChangeListener {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), ExpenseListFragment.EditOrCreateNewExp
         Log.e("LOG_TAG", "createdNewExpense")
         val fragment = supportFragmentManager.findFragmentByTag("ExpenseListFragment")
         if (fragment != null && fragment is ExpenseListFragment) {
-            fragment.addExspenseToRecyclerView(expenseModel)
+            fragment.addExpenseToRecyclerView(expenseModel)
         }
     }
 
