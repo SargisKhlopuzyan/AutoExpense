@@ -9,13 +9,24 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.sargiskh.autoexpense.ExpenseModel
+import io.reactivex.Completable
+import io.reactivex.Observable
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import org.reactivestreams.Subscriber
+import retrofit2.http.Query
+import java.util.concurrent.Callable
+
 
 class ExpenseDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
 
+    // Method called when Database is created.
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL(SQL_CREATE_ENTRIES)
     }
 
+    // Method called when Database is upgraded.
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL(SQL_DELETE_ENTRIES)
         onCreate(db)
@@ -138,6 +149,7 @@ class ExpenseDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     }
 
     fun readAllExpenses(): ArrayList<ExpenseModel> {
+
         val users = ArrayList<ExpenseModel>()
         val db = writableDatabase
         var cursor: Cursor? = null
@@ -180,8 +192,11 @@ class ExpenseDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     }
 
     companion object {
+
         // If you change the database schema, you must increment the database version.
-        val DATABASE_VERSION = 1
+        private val DATABASE_VERSION = 1
+
+        //Database name.
         val DATABASE_NAME = "FeedReader.db"
 
         private val SQL_CREATE_ENTRIES =
@@ -199,5 +214,4 @@ class ExpenseDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${DBContract.ExpenseModelEntry.TABLE_NAME}"
     }
-
 }

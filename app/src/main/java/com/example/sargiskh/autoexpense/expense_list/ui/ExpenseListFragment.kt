@@ -233,7 +233,4 @@ class ExpenseListFragment : Fragment() , ExpenseListFragmentInterface , Compound
         expenseListPresenter.addExpense(expenseModel)
     }
 
-
-
-
 }

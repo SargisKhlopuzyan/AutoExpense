@@ -3,7 +3,9 @@ package com.example.sargiskh.autoexpense.expense_list.presenter
 import android.content.Context
 import com.example.sargiskh.autoexpense.ExpenseModel
 import com.example.sargiskh.autoexpense.database.ExpenseDBHelper
+import com.example.sargiskh.autoexpense.database.db_rx.DbRxHelper
 import com.example.sargiskh.autoexpense.expense_list.ui.ExpenseListFragmentInterface
+import io.reactivex.observers.DisposableObserver
 
 class ExpenseListPresenter(var expenseListFragmentInterface: ExpenseListFragmentInterface, var context: Context): ExpenseListPresenterInterface {
 
@@ -13,10 +15,16 @@ class ExpenseListPresenter(var expenseListFragmentInterface: ExpenseListFragment
 
 
     override fun retrieveAllExpenseList() {
+        // Rx Version
+        DbRxHelper().getObservableForAllExpenses(context).subscribe(disposableObserver)
+
+        // Normal Db call
+        /*
         val expenseDBHelper = ExpenseDBHelper(context)
         expenseModelList.clear()
         expenseModelList.addAll(expenseDBHelper.readAllExpenses())
         expenseListFragmentInterface.updateRecyclerView()
+        */
     }
 
     override fun addExpense(expenseModel: ExpenseModel) {
@@ -49,4 +57,23 @@ class ExpenseListPresenter(var expenseListFragmentInterface: ExpenseListFragment
         }
         expenseListFragmentInterface.updateRecyclerView()
     }
+
+
+    private val disposableObserver = object : DisposableObserver<ArrayList<ExpenseModel>>() {
+
+        override fun onComplete() {
+
+        }
+
+        override fun onNext(t: ArrayList<ExpenseModel>) {
+            expenseModelList.clear()
+            expenseModelList.addAll(t)
+            expenseListFragmentInterface.updateRecyclerView()
+        }
+
+        override fun onError(e: Throwable) {
+            expenseListFragmentInterface.displayError("Error: " + e)
+        }
+    }
+
 }
