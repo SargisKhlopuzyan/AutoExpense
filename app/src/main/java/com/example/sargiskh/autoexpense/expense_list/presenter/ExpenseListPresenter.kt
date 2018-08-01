@@ -5,6 +5,7 @@ import com.example.sargiskh.autoexpense.ExpenseModel
 import com.example.sargiskh.autoexpense.database.ExpenseDBHelper
 import com.example.sargiskh.autoexpense.database.db_rx.DbRxHelper
 import com.example.sargiskh.autoexpense.expense_list.ui.ExpenseListFragmentInterface
+import io.reactivex.Observable
 import io.reactivex.observers.DisposableObserver
 
 class ExpenseListPresenter(var expenseListFragmentInterface: ExpenseListFragmentInterface, var context: Context): ExpenseListPresenterInterface {
@@ -62,7 +63,7 @@ class ExpenseListPresenter(var expenseListFragmentInterface: ExpenseListFragment
     private val disposableObserver = object : DisposableObserver<ArrayList<ExpenseModel>>() {
 
         override fun onComplete() {
-
+            this.dispose()
         }
 
         override fun onNext(t: ArrayList<ExpenseModel>) {
